@@ -1,213 +1,249 @@
 import {
   FaReact,
   FaNodeJs,
-  FaPython,
-  FaDocker,
   FaGitAlt,
-  FaFigma,
-  FaAws,
+  FaGithub,
+  FaLinkedinIn,
+  FaTwitter,
+  FaEnvelope,
 } from 'react-icons/fa';
 import {
   SiJavascript,
   SiTypescript,
-  SiNextdotjs,
-  SiTailwindcss,
-  SiMongodb,
-  SiPostgresql,
-  SiGraphql,
-  SiRedux,
-  SiFirebase,
+  SiNestjs,
   SiExpress,
+  SiMongodb,
+  SiPostman,
+  SiTailwindcss,
+  SiRedux,
+  SiNextdotjs,
+  SiVercel,
+  SiVite,
+  SiFramer,
 } from 'react-icons/si';
 
-export const navLinks = [
-  { id: 'home', title: 'Home' },
-  { id: 'about', title: 'About' },
-  { id: 'skills', title: 'Skills' },
-  { id: 'experience', title: 'Experience' },
-  { id: 'projects', title: 'Projects' },
-  { id: 'contact', title: 'Contact' },
-];
-
-export const heroData = {
-  greeting: "Hi, I'm",
-  name: 'John Doe',
+// ========================
+// PERSONAL INFO
+// ========================
+export const personalInfo = {
+  name: 'Bhautik Rakhasiya',
+  firstName: 'Bhautik',
+  lastName: 'Rakhasiya',
+  tagline: 'Full Stack Developer',
   titles: [
     'Full Stack Developer',
-    'UI/UX Designer',
-    'Open Source Contributor',
-    'Tech Enthusiast',
+    'Backend Architect',
+    'React Developer',
+    'Node.js Engineer',
   ],
   description:
-    'I craft beautiful, performant, and accessible web experiences. Passionate about building products that make a difference.',
+    'I build scalable backend systems and polished frontend experiences. Passionate about clean architecture, real-time systems, and turning complex problems into elegant solutions.',
+  email: 'bhautik@example.com',
+  phone: '+91 98765 43210',
+  location: 'Rajkot, Gujarat, India',
   resumeLink: '#',
+  socials: {
+    github: 'https://github.com/bhautikrakhasiya',
+    linkedin: 'https://linkedin.com/in/bhautikrakhasiya',
+    twitter: 'https://twitter.com/bhautikrakh',
+    email: 'mailto:bhautik@example.com',
+  },
+  // Place your actual photos at public/images/
+  profilePhoto: '/images/profile.svg',
+  photos: [
+    '/images/photo-1.svg',
+    '/images/photo-2.svg',
+    '/images/photo-3.svg',
+    '/images/photo-4.svg',
+  ],
 };
 
-export const aboutData = {
-  description: [
-    "I'm a passionate full-stack developer with 5+ years of experience building web applications that users love. I specialize in React, Node.js, and modern JavaScript ecosystems.",
-    "When I'm not coding, you'll find me contributing to open source projects, writing technical blog posts, or exploring the latest in AI and machine learning.",
-    "I believe in writing clean, maintainable code and creating interfaces that are both beautiful and functional. Every project is an opportunity to learn something new.",
-  ],
-  stats: [
-    { number: 50, suffix: '+', label: 'Projects Completed' },
-    { number: 5, suffix: '+', label: 'Years of Experience' },
-    { number: 30, suffix: '+', label: 'Happy Clients' },
-    { number: 15, suffix: 'K+', label: 'Lines of Code' },
-  ],
-  image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop&crop=face',
-};
-
-export const skillsData = [
-  { name: 'JavaScript', level: 95, icon: SiJavascript, color: '#f7df1e', category: 'Frontend' },
-  { name: 'TypeScript', level: 88, icon: SiTypescript, color: '#3178c6', category: 'Frontend' },
-  { name: 'React', level: 93, icon: FaReact, color: '#61dafb', category: 'Frontend' },
-  { name: 'Next.js', level: 85, icon: SiNextdotjs, color: '#ffffff', category: 'Frontend' },
-  { name: 'Tailwind CSS', level: 90, icon: SiTailwindcss, color: '#06b6d4', category: 'Frontend' },
-  { name: 'Redux', level: 82, icon: SiRedux, color: '#764abc', category: 'Frontend' },
-  { name: 'Node.js', level: 90, icon: FaNodeJs, color: '#339933', category: 'Backend' },
-  { name: 'Express.js', level: 87, icon: SiExpress, color: '#ffffff', category: 'Backend' },
-  { name: 'Python', level: 78, icon: FaPython, color: '#3776ab', category: 'Backend' },
-  { name: 'MongoDB', level: 85, icon: SiMongodb, color: '#47a248', category: 'Backend' },
-  { name: 'PostgreSQL', level: 80, icon: SiPostgresql, color: '#4169e1', category: 'Backend' },
-  { name: 'GraphQL', level: 75, icon: SiGraphql, color: '#e10098', category: 'Backend' },
-  { name: 'Docker', level: 72, icon: FaDocker, color: '#2496ed', category: 'Tools' },
-  { name: 'Git', level: 90, icon: FaGitAlt, color: '#f05032', category: 'Tools' },
-  { name: 'AWS', level: 70, icon: FaAws, color: '#ff9900', category: 'Tools' },
-  { name: 'Firebase', level: 82, icon: SiFirebase, color: '#ffca28', category: 'Tools' },
-  { name: 'Figma', level: 78, icon: FaFigma, color: '#f24e1e', category: 'Tools' },
+// ========================
+// NAVIGATION
+// ========================
+export const navLinks = [
+  { path: '/', label: 'Home' },
+  { path: '/projects', label: 'Projects' },
+  { path: '/experience', label: 'Experience' },
+  { path: '/contact', label: 'Contact' },
 ];
 
+// ========================
+// ABOUT
+// ========================
+export const aboutData = {
+  paragraphs: [
+    "I'm a Full Stack Developer at Kevit Technology with hands-on experience in building production-grade web applications. I specialize in Node.js, NestJS, React, and MongoDB — crafting everything from scalable REST APIs to interactive frontends.",
+    "I thrive on solving real-world engineering challenges — whether it's architecting a system to handle 1,000+ YouTube webhooks per day or building user-friendly banking interfaces with pixel-perfect precision.",
+    "I graduated with a degree in Computer Engineering from VVP Engineering College, Rajkot, and I'm always exploring new technologies to push the boundaries of what's possible on the web.",
+  ],
+  highlights: [
+    { icon: '🎯', text: 'Problem Solver' },
+    { icon: '🚀', text: 'Scalable Architecture' },
+    { icon: '💻', text: 'Clean Code Advocate' },
+    { icon: '🤝', text: 'Team Collaborator' },
+  ],
+  stats: [
+    { number: 3, suffix: '+', label: 'Major Projects' },
+    { number: 2, suffix: '+', label: 'Years Experience' },
+    { number: 1000, suffix: '+', label: 'Webhooks/Day' },
+    { number: 8.64, suffix: '', label: 'CGPA' },
+  ],
+};
+
+// ========================
+// SKILLS
+// ========================
+export const skillsData = [
+  { name: 'JavaScript', level: 92, icon: SiJavascript, color: '#f7df1e', category: 'Frontend' },
+  { name: 'TypeScript', level: 85, icon: SiTypescript, color: '#3178c6', category: 'Frontend' },
+  { name: 'React', level: 88, icon: FaReact, color: '#61dafb', category: 'Frontend' },
+  { name: 'Next.js', level: 75, icon: SiNextdotjs, color: '#ffffff', category: 'Frontend' },
+  { name: 'Tailwind CSS', level: 85, icon: SiTailwindcss, color: '#06b6d4', category: 'Frontend' },
+  { name: 'Redux', level: 72, icon: SiRedux, color: '#764abc', category: 'Frontend' },
+  { name: 'Framer Motion', level: 70, icon: SiFramer, color: '#bb4bff', category: 'Frontend' },
+  { name: 'Node.js', level: 93, icon: FaNodeJs, color: '#339933', category: 'Backend' },
+  { name: 'NestJS', level: 88, icon: SiNestjs, color: '#e0234e', category: 'Backend' },
+  { name: 'Express.js', level: 90, icon: SiExpress, color: '#ffffff', category: 'Backend' },
+  { name: 'MongoDB', level: 87, icon: SiMongodb, color: '#47a248', category: 'Backend' },
+  { name: 'Git / GitHub', level: 88, icon: FaGitAlt, color: '#f05032', category: 'Tools' },
+  { name: 'Postman', level: 85, icon: SiPostman, color: '#ff6c37', category: 'Tools' },
+  { name: 'Vite', level: 80, icon: SiVite, color: '#646cff', category: 'Tools' },
+  { name: 'Vercel', level: 75, icon: SiVercel, color: '#ffffff', category: 'Tools' },
+];
+
+// ========================
+// EXPERIENCE
+// ========================
 export const experienceData = [
   {
-    title: 'Senior Full Stack Developer',
-    company: 'TechCorp Inc.',
-    location: 'San Francisco, CA',
-    date: 'Jan 2023 - Present',
-    description: [
-      'Led the development of a microservices-based SaaS platform serving 100K+ users',
-      'Architected and implemented a real-time collaboration feature using WebSockets',
-      'Mentored a team of 5 junior developers and conducted code reviews',
-      'Reduced page load time by 40% through performance optimization',
-    ],
+    company: 'Kevit Technology',
+    role: 'Full Stack Developer',
+    location: 'Rajkot, Gujarat',
+    period: 'Jun 2024 - Present',
+    description:
+      'Working as a Full Stack Developer building scalable web applications. Handling end-to-end development from database design to frontend delivery across multiple projects.',
+    technologies: ['Node.js', 'NestJS', 'React', 'MongoDB', 'TypeScript', 'Express.js'],
     icon: '💼',
     color: '#6c63ff',
   },
-  {
-    title: 'Full Stack Developer',
-    company: 'InnovateLab',
-    location: 'New York, NY',
-    date: 'Jun 2021 - Dec 2022',
-    description: [
-      'Built and maintained a React-based dashboard for data analytics',
-      'Developed RESTful APIs using Node.js and Express with PostgreSQL',
-      'Implemented CI/CD pipelines using GitHub Actions and Docker',
-      'Collaborated with UX designers to improve user engagement by 35%',
-    ],
-    icon: '🚀',
-    color: '#00d4ff',
-  },
-  {
-    title: 'Frontend Developer',
-    company: 'WebStudio',
-    location: 'Austin, TX',
-    date: 'Mar 2020 - May 2021',
-    description: [
-      'Developed responsive web applications using React and Redux',
-      'Created reusable component libraries used across 10+ projects',
-      'Integrated third-party APIs and payment gateways',
-      'Wrote unit and integration tests achieving 85% code coverage',
-    ],
-    icon: '💻',
-    color: '#00ff88',
-  },
-  {
-    title: 'Junior Developer',
-    company: 'StartupHub',
-    location: 'Remote',
-    date: 'Jan 2019 - Feb 2020',
-    description: [
-      'Built landing pages and marketing websites using HTML, CSS, and JavaScript',
-      'Assisted in migrating legacy jQuery codebase to React',
-      'Participated in agile ceremonies and sprint planning',
-      'Learned modern development practices and tools',
-    ],
-    icon: '🌱',
-    color: '#ff6b6b',
-  },
 ];
 
+// ========================
+// PROJECTS
+// ========================
 export const projectsData = [
   {
-    title: 'E-Commerce Platform',
+    title: 'YouTube Livestreaming Platform',
+    subtitle: 'Real-Time Streaming Infrastructure',
     description:
-      'A full-featured e-commerce platform with real-time inventory management, AI-powered recommendations, and seamless payment processing.',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
-    tags: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redis'],
+      'A comprehensive livestreaming solution built around YouTube iframe integration. Engineered to handle 1,000+ YouTube webhooks per day with reliable event processing. Started from scratch and designed a scalable architecture that supports real-time stream monitoring, webhook ingestion, and event-driven processing.',
+    longDescription: [
+      'Built a complete livestreaming platform with YouTube iframe integration for seamless video embedding.',
+      'Designed and implemented a webhook processing pipeline handling 1,000+ YouTube webhooks per day.',
+      'Architected the system from scratch with a focus on scalability, reliability, and real-time performance.',
+      'Implemented event-driven architecture for stream state management and notification systems.',
+      'Built monitoring dashboards for tracking stream health, webhook delivery rates, and system performance.',
+    ],
+    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=500&fit=crop',
+    tags: ['Node.js', 'NestJS', 'MongoDB', 'WebSocket', 'YouTube API', 'Webhooks'],
     liveUrl: '#',
     githubUrl: '#',
     featured: true,
+    color: '#ff4757',
+    icon: '🎬',
   },
   {
-    title: 'AI Chat Application',
+    title: 'TACB - Banking Portal',
+    subtitle: 'User-Friendly Banking Interface',
     description:
-      'Real-time chat application with AI-powered responses, sentiment analysis, and multi-language translation support.',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop',
-    tags: ['Next.js', 'OpenAI', 'Socket.io', 'PostgreSQL'],
+      'A bank-related web application focused on delivering an exceptional user experience. Worked primarily on the frontend, creating intuitive interfaces for banking operations with clean, accessible design that makes complex financial workflows feel simple.',
+    longDescription: [
+      'Developed a user-friendly banking portal with focus on UI/UX excellence.',
+      'Created responsive, accessible interfaces for complex banking operations.',
+      'Implemented form validation, data visualization, and transaction management features.',
+      'Worked closely with the design team to ensure pixel-perfect implementation.',
+      'Optimized frontend performance for smooth interactions across devices.',
+    ],
+    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f2?w=800&h=500&fit=crop',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'REST API', 'Redux'],
     liveUrl: '#',
     githubUrl: '#',
     featured: true,
+    color: '#2ed573',
+    icon: '🏦',
   },
   {
-    title: 'Project Management Tool',
+    title: 'Cysource - E-Learning Platform',
+    subtitle: 'Course Management & Examination System',
     description:
-      'Collaborative project management tool with Kanban boards, Gantt charts, and real-time team collaboration features.',
-    image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
-    tags: ['React', 'GraphQL', 'TypeScript', 'AWS'],
+      'An Udemy-style e-learning platform where users can purchase courses, watch content, and take exams. Features course catalog management, secure payment integration, progress tracking, and examination systems with automated grading.',
+    longDescription: [
+      'Built an end-to-end e-learning platform similar to Udemy with course purchasing and management.',
+      'Implemented course catalog with search, filtering, and categorization features.',
+      'Developed an examination system with multiple question types and automated grading.',
+      'Integrated secure payment processing for course purchases.',
+      'Built progress tracking, bookmarking, and certificate generation features.',
+    ],
+    image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&h=500&fit=crop',
+    tags: ['Node.js', 'Express.js', 'MongoDB', 'React', 'Payment Gateway'],
     liveUrl: '#',
     githubUrl: '#',
     featured: true,
-  },
-  {
-    title: 'Fitness Tracker App',
-    description:
-      'Cross-platform fitness tracking application with workout plans, progress analytics, and social features.',
-    image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&h=400&fit=crop',
-    tags: ['React Native', 'Firebase', 'Redux', 'Chart.js'],
-    liveUrl: '#',
-    githubUrl: '#',
-    featured: false,
-  },
-  {
-    title: 'Weather Dashboard',
-    description:
-      'Beautiful weather dashboard with interactive maps, 7-day forecasts, and location-based alerts.',
-    image: 'https://images.unsplash.com/photo-1592210454359-9043f067919b?w=600&h=400&fit=crop',
-    tags: ['Vue.js', 'OpenWeather API', 'Mapbox', 'D3.js'],
-    liveUrl: '#',
-    githubUrl: '#',
-    featured: false,
-  },
-  {
-    title: 'Blog Platform',
-    description:
-      'Full-stack blog platform with markdown editor, SEO optimization, and analytics dashboard.',
-    image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=400&fit=crop',
-    tags: ['Next.js', 'MDX', 'Prisma', 'Vercel'],
-    liveUrl: '#',
-    githubUrl: '#',
-    featured: false,
+    color: '#6c63ff',
+    icon: '📚',
   },
 ];
 
-export const contactData = {
-  email: 'hello@johndoe.dev',
-  phone: '+1 (555) 123-4567',
-  location: 'San Francisco, CA',
-  socials: {
-    github: 'https://github.com',
-    linkedin: 'https://linkedin.com',
-    twitter: 'https://twitter.com',
-    dribbble: 'https://dribbble.com',
+// ========================
+// EDUCATION
+// ========================
+export const educationData = [
+  {
+    degree: 'Bachelor of Engineering',
+    field: 'Computer Engineering',
+    institution: 'VVP Engineering College',
+    location: 'Rajkot, Gujarat',
+    year: '2021 - 2025',
+    cgpa: '8.64',
+    highlights: [
+      'Specialized in web technologies and software development',
+      'Built multiple full-stack projects during coursework',
+      'Strong foundation in data structures, algorithms, and system design',
+    ],
+    icon: '🎓',
+    color: '#00d4ff',
   },
+];
+
+// ========================
+// CONTACT
+// ========================
+export const contactData = {
+  heading: "Let's Build Something Amazing",
+  description:
+    "Got a project in mind or just want to connect? I'm always open to discussing new opportunities, creative ideas, or ways to bring your vision to life.",
+  email: personalInfo.email,
+  phone: personalInfo.phone,
+  location: personalInfo.location,
+  socials: personalInfo.socials,
+};
+
+// ========================
+// FOOTER
+// ========================
+export const footerData = {
+  tagline: 'Crafting scalable solutions & pixel-perfect interfaces.',
+  quickLinks: [
+    { path: '/', label: 'Home' },
+    { path: '/projects', label: 'Projects' },
+    { path: '/experience', label: 'Experience' },
+    { path: '/contact', label: 'Contact' },
+  ],
+  services: [
+    'Full Stack Development',
+    'Backend Architecture',
+    'API Development',
+    'Frontend Development',
+  ],
 };

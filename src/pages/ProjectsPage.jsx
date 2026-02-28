@@ -1,0 +1,41 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import Projects from '../sections/Projects';
+
+const ProjectsPage = () => {
+  return (
+    <>
+      {/* Page Hero */}
+      <section className="pt-32 pb-12 px-6 text-center">
+        <motion.div
+          className="max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.span
+            className="inline-block px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary bg-primary/10 rounded-full mb-4"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            Portfolio
+          </motion.span>
+          <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
+            My <span className="text-gradient">Projects</span>
+          </h1>
+          <p className="text-text-secondary text-lg leading-relaxed max-w-2xl mx-auto">
+            Real-world applications I've designed and developed at Kevit Technology — from scalable backends to polished frontends.
+          </p>
+        </motion.div>
+      </section>
+
+      {/* Projects Grid */}
+      <section className="py-12 pb-24 px-6 max-w-7xl mx-auto">
+        <Projects detailed showHeader={false} />
+      </section>
+    </>
+  );
+};
+
+export default ProjectsPage;

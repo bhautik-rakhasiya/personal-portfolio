@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6c63ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6c63ff;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:0.6" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="200" fill="#0a0a1a"/>
+  <circle cx="200" cy="200" r="180" fill="none" stroke="url(#ring)" stroke-width="2" stroke-dasharray="8 6"/>
+  <circle cx="200" cy="200" r="160" fill="url(#bg)" opacity="0.15"/>
+  <circle cx="200" cy="150" r="55" fill="url(#bg)" opacity="0.7"/>
+  <ellipse cx="200" cy="280" rx="85" ry="60" fill="url(#bg)" opacity="0.7"/>
+  <text x="200" y="215" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="white" text-anchor="middle" opacity="0.9">BR</text>
+</svg>
