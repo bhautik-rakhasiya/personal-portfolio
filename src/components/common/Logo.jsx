@@ -96,7 +96,6 @@ const Logo = ({ size = 'md', animated = true, asLink = true, className = '' }) =
         >
           Bhautik
         </span>
-        <span className="text-white/80"> R.</span>
       </span>
     </motion.div>
   );

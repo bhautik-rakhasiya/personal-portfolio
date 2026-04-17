@@ -62,14 +62,6 @@ const Hero = () => {
           initial="hidden"
           animate="visible"
         >
-          {/* Badge */}
-          <motion.div
-            className="inline-flex items-center gap-2 px-5 py-2 bg-primary/10 border border-primary/20 rounded-full text-sm text-primary-light mb-7"
-            variants={itemVariants}
-          >
-            <span className="w-2 h-2 bg-accent-green rounded-full animate-pulse" />
-            Available for opportunities
-          </motion.div>
 
           {/* Title */}
           <motion.h1

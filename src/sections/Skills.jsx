@@ -16,7 +16,7 @@ const Skills = () => {
       : skillsData.filter((s) => s.category === activeCategory);
 
   return (
-    <section id="skills" className="py-20 md:py-28 relative overflow-hidden">
+    <section id="skills" className="py-12 md:py-16 relative overflow-hidden">
       <div className="absolute w-[500px] h-[500px] rounded-full bg-accent/3 blur-[100px] -bottom-50 -left-50 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
@@ -28,7 +28,7 @@ const Skills = () => {
 
         {/* Category Tabs */}
         <motion.div
-          className="flex justify-center gap-3 mb-12 flex-wrap"
+          className="flex justify-center gap-3 mb-8 flex-wrap"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -63,7 +63,7 @@ const Skills = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-5"
+              className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
@@ -72,7 +72,7 @@ const Skills = () => {
               {filtered.map((skill, index) => (
                 <motion.div
                   key={skill.name}
-                  className="glass flex flex-col items-center gap-3 px-4 py-7 rounded-2xl text-center cursor-default transition-all duration-300 group"
+                  className="glass flex flex-col items-center gap-2 px-2 py-4 rounded-2xl text-center cursor-default transition-all duration-300 group"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={inView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ delay: index * 0.04, duration: 0.5 }}
@@ -83,12 +83,12 @@ const Skills = () => {
                   }}
                 >
                   <div
-                    className="w-14 h-14 flex items-center justify-center rounded-2xl bg-white/3 group-hover:scale-110 transition-transform duration-300"
+                    className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/3 group-hover:scale-110 transition-transform duration-300"
                     style={{ color: skill.color }}
                   >
-                    <skill.icon size={28} />
+                    <skill.icon size={22} />
                   </div>
-                  <h4 className="text-sm font-semibold text-text-primary">{skill.name}</h4>
+                  <h4 className="text-xs font-semibold text-text-primary leading-tight">{skill.name}</h4>
                 </motion.div>
               ))}
             </motion.div>

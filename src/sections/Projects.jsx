@@ -1,11 +1,59 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaLock, FaChevronDown, FaChevronUp, FaEnvelope } from 'react-icons/fa';
-import { HiShieldCheck } from 'react-icons/hi';
+import { FaLock, FaChevronDown, FaChevronUp, FaEnvelope, FaExternalLinkAlt } from 'react-icons/fa';
+import { HiShieldCheck, HiExternalLink } from 'react-icons/hi';
 import { NavLink } from 'react-router-dom';
 import { projectsData } from '../data';
 import SectionHeader from '../components/ui/SectionHeader';
+
+const LiveLinkOverlay = ({ color, liveUrl }) => (
+  <motion.a
+    href={liveUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="absolute inset-0 z-3 flex flex-col items-center justify-center gap-4 cursor-pointer"
+    style={{
+      background: `linear-gradient(135deg, ${color}bb 0%, rgba(10,10,15,0.88) 60%)`,
+      backdropFilter: 'blur(6px)',
+    }}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.25 }}
+  >
+    <motion.div
+      className="relative flex items-center justify-center"
+      initial={{ scale: 0.4, rotate: -15 }}
+      animate={{ scale: 1, rotate: 0 }}
+      exit={{ scale: 0.4, rotate: 15 }}
+      transition={{ type: 'spring', stiffness: 400, damping: 18 }}
+    >
+      <div
+        className="w-16 h-16 rounded-2xl flex items-center justify-center"
+        style={{ background: `${color}25`, border: `2px solid ${color}60` }}
+      >
+        <FaExternalLinkAlt size={22} style={{ color }} />
+      </div>
+      <motion.div
+        className="absolute inset-0 rounded-2xl"
+        style={{ border: `2px solid ${color}40` }}
+        animate={{ scale: [1, 1.35, 1], opacity: [0.6, 0, 0.6] }}
+        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+      />
+    </motion.div>
+    <motion.div
+      className="flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-white"
+      style={{ background: `${color}40`, border: `1px solid ${color}60` }}
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.08 }}
+    >
+      <HiExternalLink size={13} />
+      Visit Website
+    </motion.div>
+  </motion.a>
+);
 
 const ConfidentialOverlay = ({ color }) => (
   <motion.div
@@ -54,33 +102,12 @@ const ConfidentialOverlay = ({ color }) => (
       Confidential Project
     </motion.div>
 
-    {/* Sub text */}
-    <motion.p
-      className="text-xs text-white/60 text-center px-6 leading-relaxed"
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.14 }}
-    >
-      NDA protected · Details available on request
-    </motion.p>
-
     {/* CTA */}
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
     >
-      <NavLink to="/contact">
-        <motion.span
-          className="inline-flex items-center gap-2 px-5 py-2 text-xs font-semibold text-white rounded-full cursor-pointer"
-          style={{ background: color, boxShadow: `0 4px 20px ${color}60` }}
-          whileHover={{ scale: 1.07, boxShadow: `0 8px 30px ${color}80` }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <FaEnvelope size={11} />
-          Discuss This Project
-        </motion.span>
-      </NavLink>
     </motion.div>
   </motion.div>
 );
@@ -93,8 +120,9 @@ const ProjectCard = ({ project, index, detailed = false }) => {
   return (
     <motion.div
       ref={ref}
-      className="group bg-dark-card border border-border rounded-2xl overflow-hidden transition-all duration-300"
+      className="group border border-border rounded-2xl overflow-hidden transition-all duration-300"
       style={{
+        background: `linear-gradient(180deg, ${project.color}10 0%, #0d0d1a 100%)`,
         boxShadow: isHovered
           ? `0 24px 60px rgba(0,0,0,0.35), 0 0 0 1px ${project.color}30, 0 0 40px ${project.color}12`
           : '0 4px 20px rgba(0,0,0,0.2)',
@@ -107,6 +135,12 @@ const ProjectCard = ({ project, index, detailed = false }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      {/* Colored top accent border */}
+      <div
+        className="h-1 w-full flex-shrink-0"
+        style={{ background: `linear-gradient(90deg, ${project.color}, ${project.color}55)` }}
+      />
+
       {/* Image area */}
       <div className="relative w-full h-56 overflow-hidden">
         <motion.img
@@ -128,9 +162,13 @@ const ProjectCard = ({ project, index, detailed = false }) => {
           transition={{ duration: 0.3 }}
         />
 
-        {/* Confidential overlay */}
+        {/* Confidential or live link overlay */}
         <AnimatePresence>
-          {isHovered && <ConfidentialOverlay color={project.color} />}
+          {isHovered && (
+            project.liveUrl && project.liveUrl !== '#'
+              ? <LiveLinkOverlay color={project.color} liveUrl={project.liveUrl} />
+              : <ConfidentialOverlay color={project.color} />
+          )}
         </AnimatePresence>
 
         {/* Top-left icon */}
@@ -143,13 +181,22 @@ const ProjectCard = ({ project, index, detailed = false }) => {
           {project.icon}
         </motion.div>
 
-        {/* Private badge - top right */}
-        <div className="absolute top-4 right-4 z-4 flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
-          style={{ background: 'rgba(10,10,15,0.75)', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(4px)' }}
-        >
-          <FaLock size={8} />
-          Private
-        </div>
+        {/* Private or Live badge - top right */}
+        {project.liveUrl && project.liveUrl !== '#' ? (
+          <div className="absolute top-4 right-4 z-4 flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
+            style={{ background: `${project.color}30`, border: `1px solid ${project.color}60`, color: project.color, backdropFilter: 'blur(4px)' }}
+          >
+            <HiExternalLink size={9} />
+            Live
+          </div>
+        ) : (
+          <div className="absolute top-4 right-4 z-4 flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
+            style={{ background: 'rgba(10,10,15,0.75)', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(4px)' }}
+          >
+            <FaLock size={8} />
+            Private
+          </div>
+        )}
       </div>
 
       {/* Card body */}

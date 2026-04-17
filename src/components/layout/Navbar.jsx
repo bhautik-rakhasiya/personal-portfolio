@@ -116,105 +116,93 @@ const Navbar = () => {
 
         {/* Mobile Toggle */}
         <motion.button
-          className="flex lg:hidden bg-transparent border-none text-text-primary p-2 rounded-lg hover:bg-primary/10 transition-all z-[1001]"
+          className="flex lg:hidden bg-transparent border-none text-text-primary p-2 rounded-lg hover:bg-primary/10 transition-all"
           onClick={() => setMobileOpen(!mobileOpen)}
           whileTap={{ scale: 0.9 }}
           aria-label="Toggle menu"
         >
-          {mobileOpen ? <HiX size={28} /> : <HiMenuAlt3 size={28} />}
+          <HiMenuAlt3 size={28} />
         </motion.button>
       </div>
 
-      {/* Mobile Sidebar Drawer — rendered via portal to escape motion.nav transform context */}
+      {/* Mobile Full-Screen Menu — rendered via portal */}
       {createPortal(
         <AnimatePresence>
         {mobileOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[998]"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              onClick={() => setMobileOpen(false)}
-            />
-
-            {/* Sidebar panel - slides from left */}
-            <motion.div
-              className="fixed top-0 left-0 bottom-0 w-72 bg-dark-secondary border-r border-border z-[999] flex flex-col overflow-y-auto shadow-[4px_0_40px_rgba(0,0,0,0.5)]"
-              initial={{ x: '-100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '-100%' }}
-              transition={{ duration: 0.35, ease: [0.6, 0, 0.2, 1] }}
-            >
-              {/* Sidebar header */}
-              <div className="flex items-center justify-between px-6 py-5 border-b border-border">
-                <Logo size="sm" animated={false} asLink={false} />
-                <motion.button
-                  className="w-9 h-9 flex items-center justify-center rounded-lg text-text-secondary hover:text-text-primary hover:bg-white/5 transition-all bg-transparent border-none cursor-pointer"
-                  onClick={() => setMobileOpen(false)}
-                  whileTap={{ scale: 0.9 }}
-                  aria-label="Close menu"
-                >
-                  <HiX size={22} />
-                </motion.button>
-              </div>
-
-              {/* Nav Links */}
-              <nav className="flex-1 px-4 py-6">
-                <ul className="flex flex-col gap-1">
-                  {navLinks.map((link, index) => (
-                    <motion.li
-                      key={link.path}
-                      initial={{ opacity: 0, x: -24 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.05 + index * 0.07, duration: 0.35 }}
-                    >
-                      <NavLink
-                        to={link.path}
-                        className={({ isActive }) =>
-                          `flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 ${
-                            isActive
-                              ? 'text-primary bg-primary/10 border border-primary/20'
-                              : 'text-text-secondary hover:text-text-primary hover:bg-white/5'
-                          }`
-                        }
-                      >
-                        <span className="text-xs text-primary font-heading font-bold">0{index + 1}.</span>
-                        {link.label}
-                      </NavLink>
-                    </motion.li>
-                  ))}
-                </ul>
-              </nav>
-
-              {/* Bottom actions */}
-              <motion.div
-                className="px-4 py-6 border-t border-border flex flex-col gap-3"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35, duration: 0.35 }}
+          <motion.div
+            className="fixed inset-0 bg-dark z-[1002] flex flex-col overflow-y-auto"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ duration: 0.35, ease: [0.6, 0, 0.2, 1] }}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between px-6 py-5 border-b border-border">
+              <Logo size="sm" animated={false} asLink={false} />
+              <motion.button
+                className="w-10 h-10 flex items-center justify-center rounded-xl text-text-secondary hover:text-text-primary hover:bg-white/5 transition-all bg-transparent border-none cursor-pointer"
+                onClick={() => setMobileOpen(false)}
+                whileTap={{ scale: 0.9 }}
+                aria-label="Close menu"
               >
-                <a
-                  href={personalInfo.resumeLink}
-                  download="Bhautik_Rakhasiya_Resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 py-3 text-sm font-semibold text-primary border-2 border-primary/40 rounded-xl hover:border-primary hover:bg-primary/10 transition-all duration-200"
-                >
-                  <HiDownload size={16} />
-                  Download CV
-                </a>
-                <NavLink to="/contact">
-                  <span className="flex items-center justify-center gap-2 py-3 text-sm font-semibold text-white gradient-bg rounded-xl w-full">
-                    Let's Talk
-                  </span>
-                </NavLink>
-              </motion.div>
+                <HiX size={24} />
+              </motion.button>
+            </div>
+
+            {/* Nav Links — centered, full-screen */}
+            <nav className="flex-1 flex flex-col justify-center px-8 py-8">
+              <ul className="flex flex-col gap-2">
+                {navLinks.map((link, index) => (
+                  <motion.li
+                    key={link.path}
+                    initial={{ opacity: 0, x: 40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 + index * 0.08, duration: 0.35 }}
+                  >
+                    <NavLink
+                      to={link.path}
+                      className={({ isActive }) =>
+                        `flex items-center gap-4 px-5 py-4 rounded-2xl text-xl font-semibold transition-all duration-200 ${
+                          isActive
+                            ? 'text-primary bg-primary/10 border border-primary/20'
+                            : 'text-text-secondary hover:text-text-primary hover:bg-white/5'
+                        }`
+                      }
+                    >
+                      <span className="text-sm text-primary font-heading font-bold min-w-[28px]">0{index + 1}.</span>
+                      {link.label}
+                    </NavLink>
+                  </motion.li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* Bottom actions */}
+            <motion.div
+              className="px-8 py-8 border-t border-border flex flex-col gap-3"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.35 }}
+            >
+              <a
+                href={personalInfo.resumeLink}
+                download="Bhautik_Rakhasiya_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 py-4 text-base font-semibold text-primary border-2 border-primary/40 rounded-2xl hover:border-primary hover:bg-primary/10 transition-all duration-200"
+              >
+                <HiDownload size={18} />
+                Download CV
+              </a>
+              <NavLink to="/contact">
+                <span className="flex items-center justify-center gap-2 py-4 text-base font-semibold text-white gradient-bg rounded-2xl w-full">
+                  Let's Talk
+                </span>
+              </NavLink>
             </motion.div>
-          </>
-        )}      </AnimatePresence>,
+          </motion.div>
+        )}
+        </AnimatePresence>,
         document.body,
       )}
     </motion.nav>

@@ -7,6 +7,8 @@ import {
   FaEnvelope,
   FaAws,
   FaDatabase,
+  FaServer,
+  FaCodeBranch,
 } from 'react-icons/fa';
 import {
   SiJavascript,
@@ -24,6 +26,7 @@ import {
   SiYoutube,
   SiHtml5,
   SiCss3,
+  SiSwagger,
 } from 'react-icons/si';
 
 // ========================
@@ -38,7 +41,7 @@ export const personalInfo = {
     'Full Stack Developer',
     'Backend Architect',
     'React Developer',
-    'Node.js Engineer',
+    'Node.js Developer',
   ],
   description:
     'Full Stack Developer with 2+ years of experience building production-grade web applications using Node.js, NestJS, Express.js, React.js, and MongoDB. Passionate about clean architecture, real-time systems, and turning complex problems into elegant solutions.',
@@ -118,6 +121,10 @@ export const skillsData = [
   { name: 'Git / GitHub', level: 90, icon: FaGitAlt, color: '#f05032', category: 'Tools' },
   { name: 'Postman', level: 88, icon: SiPostman, color: '#ff6c37', category: 'Tools' },
   { name: 'Vite', level: 80, icon: SiVite, color: '#646cff', category: 'Tools' },
+  { name: 'Swagger', level: 82, icon: SiSwagger, color: '#85EA2D', category: 'Tools' },
+  // Architecture
+  { name: 'Monolithic Architecture', level: 80, icon: FaServer, color: '#6c63ff', category: 'Backend' },
+  { name: 'Monorepo Architecture', level: 78, icon: FaCodeBranch, color: '#2ed573', category: 'Backend' },
 ];
 
 // ========================
@@ -163,12 +170,12 @@ export const projectsData = [
       'Built a custom iframe-based streaming UI with rich search, sort, filtering, and a user profile panel for personalizing embed colors and streaming views.',
       'Integrated AWS Cognito passwordless authentication (email + OTP) on both frontend and backend with full token verification and session management.',
     ],
-    image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=500&fit=crop&q=80',
+    image: '/images/livestreaming.png',
     tags: ['Node.js', 'Express.js', 'MongoDB', 'React.js', 'YouTube Data API v3', 'PubSubHubbub', 'AWS Cognito', 'WebSocket'],
-    liveUrl: '#',
+    liveUrl: 'https://wolfpackservices.ca/pages/livestream',
     githubUrl: '#',
     featured: true,
-    color: '#ff4757',
+    color: '#ffa500',
     icon: '🎬',
   },
   {
@@ -185,12 +192,12 @@ export const projectsData = [
       'Integrated AWS Cognito on the frontend for secure user authentication, session management, and protected routing.',
       'Focused on responsive design, accessibility, and pixel-perfect implementation of complex banking workflows.',
     ],
-    image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=500&fit=crop&q=80',
+    image: '/images/banking-portal.png',
     tags: ['React.js', 'TypeScript', 'MUI', 'Redux', 'AWS Cognito', 'i18n', 'Tailwind CSS', 'RBAC'],
     liveUrl: '#',
     githubUrl: '#',
     featured: true,
-    color: '#2ed573',
+    color: '#F24E1E',
     icon: '🏦',
   },
   {
@@ -206,12 +213,12 @@ export const projectsData = [
       'Built scheduled data-sync jobs to pull updated time-tracking and task data from ClickUp at regular intervals, ensuring always-fresh platform data.',
       'Delivered the complete backend independently: Node.js, ClickUp API integration, database schema, business logic, and scheduled automation.',
     ],
-    image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=500&fit=crop&q=80',
+    image: 'https://www.slideteam.net/media/catalog/product/cache/1280x720/r/e/resource_demand_and_capacity_planning_dashboard_slide01.jpg',
     tags: ['Node.js', 'ClickUp API', 'MongoDB', 'TypeScript', 'Scheduled Jobs', 'REST API'],
     liveUrl: '#',
     githubUrl: '#',
     featured: true,
-    color: '#6c63ff',
+    color: '#FF10ff',
     icon: '📊',
   },
   {
@@ -225,12 +232,12 @@ export const projectsData = [
       'Developed a fully mobile-responsive, modular component library using Tailwind CSS for consistent UI across all device sizes.',
       'Implemented Progressive Web App (PWA) support enabling society members to install and use the app natively on their devices without an app store.',
     ],
-    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=500&fit=crop&q=80',
+    image: '/images/society-management.png',
     tags: ['React.js', 'Tailwind CSS', 'Context API', 'RBAC', 'PWA', 'Responsive Design'],
     liveUrl: '#',
     githubUrl: '#',
     featured: false,
-    color: '#00d4ff',
+    color: '#3B82F6',
     icon: '🏘️',
   },
 ];
