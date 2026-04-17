@@ -4,12 +4,12 @@ import { NavLink, Link } from 'react-router-dom';
 import {
   FaGithub,
   FaLinkedinIn,
-  FaTwitter,
   FaHeart,
   FaArrowUp,
   FaEnvelope,
 } from 'react-icons/fa';
 import { personalInfo, footerData } from '../../data';
+import Logo from '../common/Logo';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -23,11 +23,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <NavLink to="/" className="inline-block mb-4">
-              <span className="font-heading text-3xl font-extrabold text-gradient">
-                {'<BR />'}
-              </span>
-            </NavLink>
+            <div className="mb-4">
+              <Logo size="sm" animated={true} asLink={true} />
+            </div>
             <p className="text-text-secondary text-sm leading-relaxed mb-6 max-w-xs">
               {footerData.tagline}
             </p>
@@ -35,7 +33,6 @@ const Footer = () => {
               {[
                 { icon: <FaGithub />, link: personalInfo.socials.github },
                 { icon: <FaLinkedinIn />, link: personalInfo.socials.linkedin },
-                { icon: <FaTwitter />, link: personalInfo.socials.twitter },
                 { icon: <FaEnvelope />, link: personalInfo.socials.email },
               ].map((social, i) => (
                 <motion.a
@@ -122,9 +119,6 @@ const Footer = () => {
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-text-muted">
             &copy; {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
-          </p>
-          <p className="text-xs text-text-muted flex items-center gap-1.5">
-            Made with <FaHeart className="text-red-500 text-[10px] animate-pulse" /> using React & Tailwind
           </p>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import {
   FaPaperPlane,
   FaLinkedinIn,
@@ -8,30 +9,88 @@ import {
   FaEnvelope,
   FaPhoneAlt,
   FaMapMarkerAlt,
+  FaCheckCircle,
+  FaExclamationCircle,
 } from 'react-icons/fa';
 import { contactData, personalInfo } from '../data';
 import SectionHeader from '../components/ui/SectionHeader';
+
+// ─── EmailJS Configuration ──────────────────────────────────────────
+// Sign up at https://www.emailjs.com/ (free - 200 emails/month)
+// 1. Create a Gmail service  → copy Service ID
+// 2. Create an email template (use variables: {{from_name}}, {{from_email}}, {{subject}}, {{message}})
+//    → copy Template ID
+// 3. Go to Account → copy Public Key
+const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // e.g. 'service_xxxxxxx'
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // e.g. 'template_xxxxxxx'
+const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // e.g. 'xxxxxxxxxxxxxxx'
+
+// ─── Google Sheets Configuration (via Sheet.best) ───────────────────
+// 1. Create a Google Sheet with columns: Timestamp, Name, Email, Subject, Message
+// 2. Go to https://sheet.best/ → Connect Sheet → copy API URL
+// 3. Paste it below. That's it!
+const SHEETBEST_API_URL = 'YOUR_SHEETBEST_API_URL'; // e.g. 'https://sheet.best/api/sheets/xxxxxxxx'
 
 const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
-  const [sending, setSending] = useState(false);
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState('idle'); // 'idle' | 'sending' | 'success' | 'error'
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSending(true);
-    // Simulate sending
-    await new Promise((r) => setTimeout(r, 1500));
-    setSending(false);
-    setSent(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setTimeout(() => setSent(false), 4000);
+    setStatus('sending');
+    setErrorMsg('');
+
+    const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+
+    try {
+      // 1️⃣  Save to Google Sheets via Sheet.best
+      if (SHEETBEST_API_URL !== 'YOUR_SHEETBEST_API_URL') {
+        await fetch(SHEETBEST_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            Timestamp: timestamp,
+            Name: formData.name,
+            Email: formData.email,
+            Subject: formData.subject,
+            Message: formData.message,
+          }),
+        });
+      }
+
+      // 2️⃣  Send email notification via EmailJS
+      if (EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
+        await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          {
+            from_name: formData.name,
+            from_email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+            timestamp,
+            to_email: personalInfo.email,
+          },
+          EMAILJS_PUBLIC_KEY,
+        );
+      }
+
+      setStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (err) {
+      console.error('Form submit error:', err);
+      setErrorMsg('Something went wrong. Please try emailing me directly.');
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 6000);
+    }
   };
 
   const contactMethods = [
@@ -45,6 +104,10 @@ const Contact = () => {
     { icon: <FaGithub />, href: personalInfo.socials?.github || '#', label: 'GitHub' },
     { icon: <FaInstagram />, href: personalInfo.socials?.instagram || '#', label: 'Instagram' },
   ];
+
+  const isSending = status === 'sending';
+  const isSent    = status === 'success';
+  const isError   = status === 'error';
 
   return (
     <div ref={ref}>
@@ -141,7 +204,7 @@ const Contact = () => {
             {/* Name */}
             <div className="flex flex-col gap-2">
               <label className="text-xs font-semibold text-text-muted uppercase tracking-wider">
-                Your Name
+                Your Name *
               </label>
               <input
                 type="text"
@@ -156,7 +219,7 @@ const Contact = () => {
             {/* Email */}
             <div className="flex flex-col gap-2">
               <label className="text-xs font-semibold text-text-muted uppercase tracking-wider">
-                Email Address
+                Email Address *
               </label>
               <input
                 type="email"
@@ -173,7 +236,7 @@ const Contact = () => {
           {/* Subject */}
           <div className="flex flex-col gap-2">
             <label className="text-xs font-semibold text-text-muted uppercase tracking-wider">
-              Subject
+              Subject *
             </label>
             <input
               type="text"
@@ -189,7 +252,7 @@ const Contact = () => {
           {/* Message */}
           <div className="flex flex-col gap-2">
             <label className="text-xs font-semibold text-text-muted uppercase tracking-wider">
-              Message
+              Message *
             </label>
             <textarea
               name="message"
@@ -202,21 +265,46 @@ const Contact = () => {
             />
           </div>
 
+          {/* Status messages */}
+          {isSent && (
+            <motion.div
+              className="flex items-center gap-3 p-4 bg-green-500/10 border border-green-500/30 rounded-xl text-green-400 text-sm"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <FaCheckCircle />
+              <span>Message sent! I'll get back to you soon. ✨</span>
+            </motion.div>
+          )}
+          {isError && (
+            <motion.div
+              className="flex items-center gap-3 p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <FaExclamationCircle />
+              <span>{errorMsg}</span>
+            </motion.div>
+          )}
+
           {/* Submit */}
           <motion.button
             type="submit"
-            disabled={sending}
+            disabled={isSending}
             className="flex items-center justify-center gap-2 w-full py-4 gradient-bg text-white rounded-xl font-semibold cursor-pointer border-none text-sm hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={!isSending ? { scale: 1.02 } : {}}
+            whileTap={!isSending ? { scale: 0.98 } : {}}
           >
-            {sending ? (
+            {isSending ? (
               <>
                 <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                 Sending...
               </>
-            ) : sent ? (
-              <>✓ Message Sent!</>
+            ) : isSent ? (
+              <>
+                <FaCheckCircle size={14} />
+                Message Sent!
+              </>
             ) : (
               <>
                 <FaPaperPlane size={14} />
@@ -224,6 +312,10 @@ const Contact = () => {
               </>
             )}
           </motion.button>
+
+          <p className="text-center text-xs text-text-muted">
+            Your message will be saved and I'll be notified via email.
+          </p>
         </motion.form>
       </div>
     </div>

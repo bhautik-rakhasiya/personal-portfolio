@@ -15,7 +15,7 @@ const Education = () => {
         description="My academic journey and qualifications"
       />
 
-      <div className="max-w-3xl mx-auto" ref={ref}>
+      <div className="max-w-3xl mx-auto space-y-6" ref={ref}>
         {educationData.map((edu, index) => (
           <motion.div
             key={index}
@@ -45,7 +45,7 @@ const Education = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="px-3 py-1 text-xs font-bold text-accent bg-accent/10 border border-accent/20 rounded-full">
-                      CGPA: {edu.cgpa}
+                      {edu.degree.startsWith('Bachelor') ? 'CGPA: ' : ''}{edu.cgpa}
                     </span>
                   </div>
                 </div>

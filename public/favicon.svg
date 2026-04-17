@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6c63ff"/>
+      <stop offset="100%" stop-color="#00d4ff"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6c63ff" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#00d4ff" stop-opacity="0.5"/>
+    </linearGradient>
+  </defs>
+  <!-- Dark background circle -->
+  <circle cx="24" cy="24" r="24" fill="#0a0a0f"/>
+  <!-- Hexagon fill -->
+  <path d="M24 4L42 14.5V33.5L24 44L6 33.5V14.5L24 4Z" fill="url(#g1)" fill-opacity="0.18" stroke="url(#g2)" stroke-width="1.5"/>
+  <!-- Inner ring -->
+  <path d="M24 8L38 16V32L24 40L10 32V16L24 8Z" fill="none" stroke="url(#g1)" stroke-width="0.75" stroke-opacity="0.35"/>
+  <!-- BR text -->
+  <text x="24" y="30" text-anchor="middle" fill="url(#g1)" font-family="'Space Grotesk','Inter',sans-serif" font-weight="800" font-size="17" letter-spacing="-0.5">BR</text>
+  <!-- Accent dots -->
+  <circle cx="37" cy="11" r="2.2" fill="#00d4ff" opacity="0.8"/>
+  <circle cx="11" cy="37" r="1.8" fill="#6c63ff" opacity="0.7"/>
+</svg>

@@ -19,7 +19,7 @@ const TimelineItem = ({ item, index }) => {
       transition={{ duration: 0.7, delay: 0.1, ease: [0.6, 0, 0.2, 1] }}
     >
       <div className="glass p-6 md:p-7 rounded-2xl hover:border-primary/30 hover:shadow-[0_0_30px_rgba(108,99,255,0.15)] transition-all duration-300">
-        <div className={`flex items-start gap-4 mb-4 ${isLeft ? 'md:flex-row-reverse' : ''}`}>
+        <div className={`flex items-start gap-4 mb-5 ${isLeft ? 'md:flex-row-reverse' : ''}`}>
           <span
             className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl text-xl border"
             style={{ background: `${item.color}15`, borderColor: `${item.color}30` }}
@@ -36,8 +36,6 @@ const TimelineItem = ({ item, index }) => {
             </div>
           </div>
         </div>
-
-        <p className="text-sm text-text-secondary leading-relaxed mb-4">{item.description}</p>
 
         <div className={`flex flex-wrap gap-2 ${isLeft ? 'md:justify-end' : ''}`}>
           {item.technologies.map((tech, i) => (

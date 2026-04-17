@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { skillsData } from '../data';
 import SectionHeader from '../components/ui/SectionHeader';
 
-const categories = ['All', 'Frontend', 'Backend', 'Tools'];
+const categories = ['All', 'Frontend', 'Backend', 'Cloud', 'Tools'];
 
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -89,16 +89,6 @@ const Skills = () => {
                     <skill.icon size={28} />
                   </div>
                   <h4 className="text-sm font-semibold text-text-primary">{skill.name}</h4>
-                  <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                    <motion.div
-                      className="h-full rounded-full"
-                      initial={{ width: 0 }}
-                      animate={inView ? { width: `${skill.level}%` } : { width: 0 }}
-                      transition={{ delay: index * 0.04 + 0.3, duration: 1, ease: 'easeOut' }}
-                      style={{ background: `linear-gradient(90deg, ${skill.color}80, ${skill.color})` }}
-                    />
-                  </div>
-                  <span className="text-xs font-semibold text-text-muted">{skill.level}%</span>
                 </motion.div>
               ))}
             </motion.div>

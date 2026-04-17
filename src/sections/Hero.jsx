@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { FaGithub, FaLinkedinIn, FaTwitter, FaArrowDown } from 'react-icons/fa';
+import { FaGithub, FaLinkedinIn, FaArrowDown } from 'react-icons/fa';
 import { personalInfo } from '../data';
 
 const TypeWriter = ({ words }) => {
@@ -113,7 +113,7 @@ const Hero = () => {
                 <span className="transition-transform group-hover:translate-x-1">→</span>
               </motion.button>
             </NavLink>
-            <a href={personalInfo.resumeLink} target="_blank" rel="noopener noreferrer">
+            <a href={personalInfo.resumeLink} download="Bhautik_Rakhasiya_Resume.pdf" target="_blank" rel="noopener noreferrer">
               <motion.button
                 className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-primary bg-transparent border-2 border-primary rounded-full cursor-pointer hover:bg-primary hover:text-white transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
@@ -129,7 +129,6 @@ const Hero = () => {
             {[
               { icon: <FaGithub />, link: personalInfo.socials.github, label: 'GitHub' },
               { icon: <FaLinkedinIn />, link: personalInfo.socials.linkedin, label: 'LinkedIn' },
-              { icon: <FaTwitter />, link: personalInfo.socials.twitter, label: 'Twitter' },
             ].map((s, i) => (
               <motion.a
                 key={i}
@@ -164,56 +163,33 @@ const Hero = () => {
               <img
                 src={personalInfo.profilePhoto}
                 alt={personalInfo.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-top"
                 onError={(e) => {
                   e.target.style.display = 'none';
                   e.target.parentElement.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-dark-card text-6xl">👨‍💻</div>`;
                 }}
               />
             </div>
-
-            {/* Floating badges */}
-            <motion.div
-              className="absolute top-[10%] -right-3 px-4 py-2 bg-dark-card border border-border rounded-xl text-sm font-semibold z-3 whitespace-nowrap shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
-              animate={{ y: [-10, 10, -10] }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              ⚛️ React
-            </motion.div>
-            <motion.div
-              className="absolute bottom-[20%] -left-5 px-4 py-2 bg-dark-card border border-border rounded-xl text-sm font-semibold z-3 whitespace-nowrap shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
-              animate={{ y: [10, -10, 10] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              🟢 Node.js
-            </motion.div>
-            <motion.div
-              className="absolute -bottom-2 right-[20%] px-4 py-2 bg-dark-card border border-border rounded-xl text-sm font-semibold z-3 whitespace-nowrap shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
-              animate={{ y: [-8, 12, -8] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              🏗️ NestJS
-            </motion.div>
           </div>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - arrow only, no text */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-2 hidden md:block"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
       >
-        <motion.div
-          className="flex flex-col items-center gap-2 text-text-muted text-xs tracking-widest uppercase cursor-pointer hover:text-primary transition-colors"
+        <motion.button
+          className="w-10 h-10 flex items-center justify-center rounded-full border border-border text-text-muted hover:border-primary hover:text-primary transition-all duration-300 bg-transparent cursor-pointer"
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+          aria-label="Scroll down"
         >
-          <span>Scroll Down</span>
-          <FaArrowDown />
-        </motion.div>
+          <FaArrowDown size={14} />
+        </motion.button>
       </motion.div>
     </section>
   );
