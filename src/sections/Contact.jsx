@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import emailjs from '@emailjs/browser';
 import {
   FaPaperPlane,
   FaLinkedinIn,
@@ -15,21 +14,7 @@ import {
 import { contactData, personalInfo } from '../data';
 import SectionHeader from '../components/ui/SectionHeader';
 
-// ─── EmailJS Configuration ──────────────────────────────────────────
-// Sign up at https://www.emailjs.com/ (free - 200 emails/month)
-// 1. Create a Gmail service  → copy Service ID
-// 2. Create an email template (use variables: {{from_name}}, {{from_email}}, {{subject}}, {{message}})
-//    → copy Template ID
-// 3. Go to Account → copy Public Key
-const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // e.g. 'service_xxxxxxx'
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // e.g. 'template_xxxxxxx'
-const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // e.g. 'xxxxxxxxxxxxxxx'
-
-// ─── Google Sheets Configuration (via Sheet.best) ───────────────────
-// 1. Create a Google Sheet with columns: Timestamp, Name, Email, Subject, Message
-// 2. Go to https://sheet.best/ → Connect Sheet → copy API URL
-// 3. Paste it below. That's it!
-const SHEETBEST_API_URL = 'YOUR_SHEETBEST_API_URL'; // e.g. 'https://sheet.best/api/sheets/xxxxxxxx'
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
 const Contact = () => {
   const ref = useRef(null);
@@ -47,44 +32,29 @@ const Contact = () => {
     setStatus('sending');
     setErrorMsg('');
 
-    const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
-
     try {
-      // 1️⃣  Save to Google Sheets via Sheet.best
-      if (SHEETBEST_API_URL !== 'YOUR_SHEETBEST_API_URL') {
-        await fetch(SHEETBEST_API_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            Timestamp: timestamp,
-            Name: formData.name,
-            Email: formData.email,
-            Subject: formData.subject,
-            Message: formData.message,
-          }),
-        });
-      }
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: formData.name,
+          email: formData.email,
+          subject: `${formData.subject}`,
+          message: formData.message,
+          from_name: formData.name,
+        }),
+      });
 
-      // 2️⃣  Send email notification via EmailJS
-      if (EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
-        await emailjs.send(
-          EMAILJS_SERVICE_ID,
-          EMAILJS_TEMPLATE_ID,
-          {
-            from_name: formData.name,
-            from_email: formData.email,
-            subject: formData.subject,
-            message: formData.message,
-            timestamp,
-            to_email: personalInfo.email,
-          },
-          EMAILJS_PUBLIC_KEY,
-        );
-      }
+      const data = await res.json();
 
-      setStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setStatus('idle'), 5000);
+      if (data.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
     } catch (err) {
       console.error('Form submit error:', err);
       setErrorMsg('Something went wrong. Please try emailing me directly.');
@@ -314,7 +284,7 @@ const Contact = () => {
           </motion.button>
 
           <p className="text-center text-xs text-text-muted">
-            Your message will be saved and I'll be notified via email.
+            I'll get back to you as soon as possible.
           </p>
         </motion.form>
       </div>
