@@ -26,7 +26,8 @@ const ExperiencePage = () => {
             Experience & <span className="text-gradient">Education</span>
           </h1>
           <p className="text-text-secondary text-lg leading-relaxed max-w-2xl mx-auto">
-            My professional journey as a Full Stack Developer and academic background in Computer Engineering.
+            My professional journey as a Full Stack Developer and academic background in Computer
+            Engineering.
           </p>
         </motion.div>
       </section>

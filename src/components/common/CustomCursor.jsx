@@ -27,10 +27,12 @@ const CustomCursor = () => {
     document.addEventListener('mouseleave', handleMouseLeave);
 
     const addHover = () => {
-      document.querySelectorAll('a, button, .hover-target, input, textarea, [role="button"]').forEach((el) => {
-        el.addEventListener('mouseenter', () => setIsHovering(true));
-        el.addEventListener('mouseleave', () => setIsHovering(false));
-      });
+      document
+        .querySelectorAll('a, button, .hover-target, input, textarea, [role="button"]')
+        .forEach((el) => {
+          el.addEventListener('mouseenter', () => setIsHovering(true));
+          el.addEventListener('mouseleave', () => setIsHovering(false));
+        });
     };
     addHover();
     const observer = new MutationObserver(addHover);

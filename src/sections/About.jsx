@@ -65,7 +65,9 @@ const About = () => {
               >
                 <span className="text-3xl font-black font-heading text-gradient">2+</span>
                 <span className="text-xs text-text-secondary font-medium leading-tight">
-                  Years of<br />Experience
+                  Years of
+                  <br />
+                  Experience
                 </span>
               </motion.div>
 
@@ -77,7 +79,9 @@ const About = () => {
               >
                 <span className="text-3xl font-black font-heading text-gradient">4+</span>
                 <span className="text-xs text-text-secondary font-medium leading-tight">
-                  Projects<br />Delivered
+                  Projects
+                  <br />
+                  Delivered
                 </span>
               </motion.div>
             </div>
@@ -96,7 +100,8 @@ const About = () => {
                 className="text-2xl sm:text-3xl font-bold font-heading text-text-primary mb-4 leading-tight"
                 variants={itemVariants}
               >
-                Building production-grade systems<br />
+                Building production-grade systems
+                <br />
                 <span className="text-gradient">end-to-end</span>
               </motion.h3>
             </div>
@@ -110,7 +115,10 @@ const About = () => {
             </motion.div>
 
             {/* Key facts */}
-            <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2" variants={itemVariants}>
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2"
+              variants={itemVariants}
+            >
               {[
                 { label: 'Location', value: '📍 Rajkot, Gujarat, India' },
                 { label: 'Education', value: '🎓 B.E. Computer Engineering' },
@@ -121,14 +129,19 @@ const About = () => {
                   key={i}
                   className="flex flex-col gap-0.5 px-4 py-3 bg-primary/5 border border-border rounded-xl"
                 >
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-text-muted">{fact.label}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-text-muted">
+                    {fact.label}
+                  </span>
                   <span className="text-sm font-medium text-text-primary">{fact.value}</span>
                 </div>
               ))}
             </motion.div>
 
             {/* Highlights */}
-            <motion.div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-1" variants={itemVariants}>
+            <motion.div
+              className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-1"
+              variants={itemVariants}
+            >
               {aboutData.highlights.map((item, i) => (
                 <motion.div
                   key={i}
@@ -166,12 +179,7 @@ const About = () => {
               <div>
                 <div className="text-4xl md:text-5xl font-extrabold font-heading text-gradient leading-none mb-1">
                   {statsInView && (
-                    <CountUp
-                      end={stat.number}
-                      duration={2.5}
-                      delay={i * 0.3}
-                      separator=","
-                    />
+                    <CountUp end={stat.number} duration={2.5} delay={i * 0.3} separator="," />
                   )}
                   <span className="text-gradient">{stat.suffix}</span>
                 </div>

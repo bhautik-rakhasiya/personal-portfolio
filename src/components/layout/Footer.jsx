@@ -1,13 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { NavLink, Link } from 'react-router-dom';
-import {
-  FaGithub,
-  FaLinkedinIn,
-  FaHeart,
-  FaArrowUp,
-  FaEnvelope,
-} from 'react-icons/fa';
+import { FaGithub, FaLinkedinIn, FaHeart, FaArrowUp, FaEnvelope } from 'react-icons/fa';
 import { personalInfo, footerData } from '../../data';
 import Logo from '../common/Logo';
 
@@ -79,10 +73,7 @@ const Footer = () => {
             </h4>
             <ul className="flex flex-col gap-3">
               {footerData.services.map((service, i) => (
-                <li
-                  key={i}
-                  className="text-sm text-text-secondary flex items-center gap-2"
-                >
+                <li key={i} className="text-sm text-text-secondary flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
                   {service}
                 </li>

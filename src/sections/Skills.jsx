@@ -11,9 +11,7 @@ const Skills = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
 
   const filtered =
-    activeCategory === 'All'
-      ? skillsData
-      : skillsData.filter((s) => s.category === activeCategory);
+    activeCategory === 'All' ? skillsData : skillsData.filter((s) => s.category === activeCategory);
 
   return (
     <section id="skills" className="py-12 md:py-16 relative overflow-hidden">
@@ -88,7 +86,9 @@ const Skills = () => {
                   >
                     <skill.icon size={22} />
                   </div>
-                  <h4 className="text-xs font-semibold text-text-primary leading-tight">{skill.name}</h4>
+                  <h4 className="text-xs font-semibold text-text-primary leading-tight">
+                    {skill.name}
+                  </h4>
                 </motion.div>
               ))}
             </motion.div>

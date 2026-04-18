@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const LOAD_PHRASES = [
-  'Initializing...',
-  'Almost ready...',
-];
+const LOAD_PHRASES = ['Initializing...', 'Almost ready...'];
 
 const Loader = ({ fullScreen = true, text = '' }) => {
   const [phraseIndex, setPhraseIndex] = useState(0);
@@ -17,11 +14,17 @@ const Loader = ({ fullScreen = true, text = '' }) => {
     }, 900);
     const progressTimer = setInterval(() => {
       setProgress((p) => {
-        if (p >= 100) { clearInterval(progressTimer); return 100; }
+        if (p >= 100) {
+          clearInterval(progressTimer);
+          return 100;
+        }
         return p + Math.random() * 6 + 2;
       });
     }, 80);
-    return () => { clearInterval(phraseTimer); clearInterval(progressTimer); };
+    return () => {
+      clearInterval(phraseTimer);
+      clearInterval(progressTimer);
+    };
   }, [fullScreen]);
 
   if (fullScreen) {
@@ -97,7 +100,14 @@ const Loader = ({ fullScreen = true, text = '' }) => {
               transition={{ duration: 0.9, ease: [0.68, -0.55, 0.27, 1.55] }}
             >
               <defs>
-                <linearGradient id="loaderGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                <linearGradient
+                  id="loaderGrad"
+                  x1="0"
+                  y1="0"
+                  x2="48"
+                  y2="48"
+                  gradientUnits="userSpaceOnUse"
+                >
                   <stop offset="0%" stopColor="#6c63ff" />
                   <stop offset="100%" stopColor="#00d4ff" />
                 </linearGradient>
@@ -226,19 +236,20 @@ const Loader = ({ fullScreen = true, text = '' }) => {
             transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
           />
           <div className="absolute inset-[6px] rounded-full bg-primary/5 flex items-center justify-center">
-            <span className="text-[8px] font-black font-heading"
+            <span
+              className="text-[8px] font-black font-heading"
               style={{
                 background: 'linear-gradient(135deg, #6c63ff, #00d4ff)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
               }}
-            >BR</span>
+            >
+              BR
+            </span>
           </div>
         </div>
-        {text && (
-          <p className="text-sm text-text-muted tracking-wide">{text}</p>
-        )}
+        {text && <p className="text-sm text-text-muted tracking-wide">{text}</p>}
       </div>
     </div>
   );

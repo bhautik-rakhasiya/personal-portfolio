@@ -45,7 +45,8 @@ const Education = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="px-3 py-1 text-xs font-bold text-accent bg-accent/10 border border-accent/20 rounded-full">
-                      {edu.degree.startsWith('Bachelor') ? 'CGPA: ' : ''}{edu.cgpa}
+                      {edu.degree.startsWith('Bachelor') ? 'CGPA: ' : ''}
+                      {edu.cgpa}
                     </span>
                   </div>
                 </div>

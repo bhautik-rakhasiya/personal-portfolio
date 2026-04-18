@@ -37,7 +37,14 @@ const Logo = ({ size = 'md', animated = true, asLink = true, className = '' }) =
             <stop offset="0%" stopColor="#6c63ff" />
             <stop offset="100%" stopColor="#00d4ff" />
           </linearGradient>
-          <linearGradient id="brGradStroke" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="brGradStroke"
+            x1="0"
+            y1="0"
+            x2="48"
+            y2="48"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop offset="0%" stopColor="#6c63ff" stopOpacity="0.5" />
             <stop offset="100%" stopColor="#00d4ff" stopOpacity="0.5" />
           </linearGradient>

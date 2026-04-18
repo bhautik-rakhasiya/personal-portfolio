@@ -25,7 +25,8 @@ const ProjectsPage = () => {
             My <span className="text-gradient">Projects</span>
           </h1>
           <p className="text-text-secondary text-lg leading-relaxed max-w-2xl mx-auto">
-            Real-world applications I've designed and developed at Kevit Technology — from scalable backends to polished frontends.
+            Real-world applications I've designed and developed at Kevit Technology — from scalable
+            backends to polished frontends.
           </p>
         </motion.div>
       </section>

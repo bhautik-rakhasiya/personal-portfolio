@@ -14,9 +14,7 @@ const SectionHeader = ({ subtitle, title, description }) => (
         {subtitle}
       </span>
     )}
-    <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-gradient mb-4">
-      {title}
-    </h2>
+    <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-gradient mb-4">{title}</h2>
     {description && (
       <p className="text-base md:text-lg text-text-secondary max-w-xl mx-auto leading-relaxed">
         {description}

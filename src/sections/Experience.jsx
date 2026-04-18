@@ -29,7 +29,9 @@ const TimelineItem = ({ item, index }) => {
           <div className="flex-1">
             <h3 className="text-lg font-bold text-text-primary">{item.role}</h3>
             <p className="text-sm font-semibold text-primary">{item.company}</p>
-            <div className={`flex items-center gap-2 text-xs text-text-muted mt-1 ${isLeft ? 'md:justify-end' : ''}`}>
+            <div
+              className={`flex items-center gap-2 text-xs text-text-muted mt-1 ${isLeft ? 'md:justify-end' : ''}`}
+            >
               <span>{item.period}</span>
               <span className="opacity-50">•</span>
               <span>{item.location}</span>

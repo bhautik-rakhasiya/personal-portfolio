@@ -37,12 +37,7 @@ export const personalInfo = {
   firstName: 'Bhautik',
   lastName: 'Rakhasiya',
   tagline: 'Full Stack Developer',
-  titles: [
-    'Full Stack Developer',
-    'Backend Architect',
-    'React Developer',
-    'Node.js Developer',
-  ],
+  titles: ['Full Stack Developer', 'Backend Architect', 'React Developer', 'Node.js Developer'],
   description:
     'Full Stack Developer with 2+ years of experience building production-grade web applications using Node.js, NestJS, Express.js, React.js, and MongoDB. Passionate about clean architecture, real-time systems, and turning complex problems into elegant solutions.',
   email: 'bhautikrakhasiya108@gmail.com',
@@ -90,8 +85,20 @@ export const aboutData = {
     { icon: '🤝', text: 'Team Collaborator' },
   ],
   stats: [
-    { number: 4, suffix: '+', label: 'Projects Delivered', icon: '🚀', desc: 'Production-grade full-stack systems' },
-    { number: 2, suffix: '+', label: 'Years Experience', icon: '💼', desc: 'Building at Kevit.io, Rajkot' },
+    {
+      number: 4,
+      suffix: '+',
+      label: 'Projects Delivered',
+      icon: '🚀',
+      desc: 'Production-grade full-stack systems',
+    },
+    {
+      number: 2,
+      suffix: '+',
+      label: 'Years Experience',
+      icon: '💼',
+      desc: 'Building at Kevit.io, Rajkot',
+    },
   ],
 };
 
@@ -117,14 +124,32 @@ export const skillsData = [
   { name: 'SQLite', level: 68, icon: SiSqlite, color: '#003b57', category: 'Backend' },
   // Cloud & Tools
   { name: 'AWS (Cognito/S3/SES)', level: 80, icon: FaAws, color: '#ff9900', category: 'Cloud' },
-  { name: 'YouTube API / Webhooks', level: 85, icon: SiYoutube, color: '#ff0000', category: 'Cloud' },
+  {
+    name: 'YouTube API / Webhooks',
+    level: 85,
+    icon: SiYoutube,
+    color: '#ff0000',
+    category: 'Cloud',
+  },
   { name: 'Git / GitHub', level: 90, icon: FaGitAlt, color: '#f05032', category: 'Tools' },
   { name: 'Postman', level: 88, icon: SiPostman, color: '#ff6c37', category: 'Tools' },
   { name: 'Vite', level: 80, icon: SiVite, color: '#646cff', category: 'Tools' },
   { name: 'Swagger', level: 82, icon: SiSwagger, color: '#85EA2D', category: 'Tools' },
   // Architecture
-  { name: 'Monolithic Architecture', level: 80, icon: FaServer, color: '#6c63ff', category: 'Backend' },
-  { name: 'Monorepo Architecture', level: 78, icon: FaCodeBranch, color: '#2ed573', category: 'Backend' },
+  {
+    name: 'Monolithic Architecture',
+    level: 80,
+    icon: FaServer,
+    color: '#6c63ff',
+    category: 'Backend',
+  },
+  {
+    name: 'Monorepo Architecture',
+    level: 78,
+    icon: FaCodeBranch,
+    color: '#2ed573',
+    category: 'Backend',
+  },
 ];
 
 // ========================
@@ -138,7 +163,16 @@ export const experienceData = [
     period: 'Jun 2024 – Present',
     description:
       'Building and delivering scalable, production-grade web applications across the full stack. Working on YouTube livestreaming infrastructure, digital banking portals, and internal telemetry platforms — handling everything from backend architecture to responsive React frontends.',
-    technologies: ['Node.js', 'Express.js', 'NestJS', 'React.js', 'MongoDB', 'TypeScript', 'AWS Cognito', 'YouTube Data API'],
+    technologies: [
+      'Node.js',
+      'Express.js',
+      'NestJS',
+      'React.js',
+      'MongoDB',
+      'TypeScript',
+      'AWS Cognito',
+      'YouTube Data API',
+    ],
     responsibilities: [
       'Architected a YouTube livestreaming platform from scratch, processing 1,000+ daily webhooks via PubSubHubbub and managing 50,000+ synchronized video records.',
       'Engineered a scoring-based video classification algorithm using metadata to auto-map videos — reducing manual classification to zero.',
@@ -171,7 +205,16 @@ export const projectsData = [
       'Integrated AWS Cognito passwordless authentication (email + OTP) on both frontend and backend with full token verification and session management.',
     ],
     image: '/images/livestreaming.png',
-    tags: ['Node.js', 'Express.js', 'MongoDB', 'React.js', 'YouTube Data API v3', 'PubSubHubbub', 'AWS Cognito', 'WebSocket'],
+    tags: [
+      'Node.js',
+      'Express.js',
+      'MongoDB',
+      'React.js',
+      'YouTube Data API v3',
+      'PubSubHubbub',
+      'AWS Cognito',
+      'WebSocket',
+    ],
     liveUrl: 'https://wolfpackservices.ca/pages/livestream',
     githubUrl: '#',
     featured: true,
@@ -213,7 +256,8 @@ export const projectsData = [
       'Built scheduled data-sync jobs to pull updated time-tracking and task data from ClickUp at regular intervals, ensuring always-fresh platform data.',
       'Delivered the complete backend independently: Node.js, ClickUp API integration, database schema, business logic, and scheduled automation.',
     ],
-    image: 'https://www.slideteam.net/media/catalog/product/cache/1280x720/r/e/resource_demand_and_capacity_planning_dashboard_slide01.jpg',
+    image:
+      'https://www.slideteam.net/media/catalog/product/cache/1280x720/r/e/resource_demand_and_capacity_planning_dashboard_slide01.jpg',
     tags: ['Node.js', 'ClickUp API', 'MongoDB', 'TypeScript', 'Scheduled Jobs', 'REST API'],
     liveUrl: '#',
     githubUrl: '#',

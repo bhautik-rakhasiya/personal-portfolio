@@ -107,8 +107,7 @@ const ConfidentialOverlay = ({ color }) => (
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
-    >
-    </motion.div>
+    ></motion.div>
   </motion.div>
 );
 
@@ -164,11 +163,12 @@ const ProjectCard = ({ project, index, detailed = false }) => {
 
         {/* Confidential or live link overlay */}
         <AnimatePresence>
-          {isHovered && (
-            project.liveUrl && project.liveUrl !== '#'
-              ? <LiveLinkOverlay color={project.color} liveUrl={project.liveUrl} />
-              : <ConfidentialOverlay color={project.color} />
-          )}
+          {isHovered &&
+            (project.liveUrl && project.liveUrl !== '#' ? (
+              <LiveLinkOverlay color={project.color} liveUrl={project.liveUrl} />
+            ) : (
+              <ConfidentialOverlay color={project.color} />
+            ))}
         </AnimatePresence>
 
         {/* Top-left icon */}
@@ -183,15 +183,27 @@ const ProjectCard = ({ project, index, detailed = false }) => {
 
         {/* Private or Live badge - top right */}
         {project.liveUrl && project.liveUrl !== '#' ? (
-          <div className="absolute top-4 right-4 z-4 flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
-            style={{ background: `${project.color}30`, border: `1px solid ${project.color}60`, color: project.color, backdropFilter: 'blur(4px)' }}
+          <div
+            className="absolute top-4 right-4 z-4 flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
+            style={{
+              background: `${project.color}30`,
+              border: `1px solid ${project.color}60`,
+              color: project.color,
+              backdropFilter: 'blur(4px)',
+            }}
           >
             <HiExternalLink size={9} />
             Live
           </div>
         ) : (
-          <div className="absolute top-4 right-4 z-4 flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
-            style={{ background: 'rgba(10,10,15,0.75)', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(4px)' }}
+          <div
+            className="absolute top-4 right-4 z-4 flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
+            style={{
+              background: 'rgba(10,10,15,0.75)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              color: 'rgba(255,255,255,0.6)',
+              backdropFilter: 'blur(4px)',
+            }}
           >
             <FaLock size={8} />
             Private
@@ -228,7 +240,12 @@ const ProjectCard = ({ project, index, detailed = false }) => {
                 >
                   {project.longDescription.map((point, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-text-secondary">
-                      <span className="mt-0.5 text-xs flex-shrink-0" style={{ color: project.color }}>▸</span>
+                      <span
+                        className="mt-0.5 text-xs flex-shrink-0"
+                        style={{ color: project.color }}
+                      >
+                        ▸
+                      </span>
                       {point}
                     </li>
                   ))}
@@ -278,7 +295,9 @@ const Projects = ({ detailed = false, showHeader = true }) => {
         />
       )}
 
-      <div className={`grid gap-8 ${detailed ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-2'}`}>
+      <div
+        className={`grid gap-8 ${detailed ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-2'}`}
+      >
         {projectsData.map((project, i) => (
           <ProjectCard key={project.title} project={project} index={i} detailed={detailed} />
         ))}

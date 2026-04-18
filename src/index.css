@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* ===== Custom Theme via Tailwind v4 ===== */
 @theme {
@@ -26,7 +26,9 @@
 }
 
 /* ===== Base ===== */
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: var(--font-sans);
   background: var(--color-dark);
@@ -34,28 +36,57 @@ body {
   overflow-x: hidden;
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--color-dark); }
-::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--color-primary-light); }
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-light);
+}
 
 /* ===== Keyframes ===== */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 @keyframes pulse-glow {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 @keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 /* ===== Utility classes ===== */
@@ -77,9 +108,15 @@ body {
 .glow-shadow {
   box-shadow: 0 0 30px rgba(108, 99, 255, 0.15);
 }
-.animate-float { animation: float 6s ease-in-out infinite; }
-.animate-float-delay { animation: float 8s ease-in-out infinite 1s; }
-.animate-float-delay-2 { animation: float 10s ease-in-out infinite 2s; }
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+.animate-float-delay {
+  animation: float 8s ease-in-out infinite 1s;
+}
+.animate-float-delay-2 {
+  animation: float 10s ease-in-out infinite 2s;
+}
 .img-placeholder {
   background: linear-gradient(135deg, var(--color-dark-card), var(--color-dark-card-hover));
   display: flex;

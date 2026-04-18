@@ -62,7 +62,6 @@ const Hero = () => {
           initial="hidden"
           animate="visible"
         >
-
           {/* Title */}
           <motion.h1
             className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black font-heading leading-[1.1] mb-5"
@@ -94,7 +93,10 @@ const Hero = () => {
           </motion.p>
 
           {/* CTAs */}
-          <motion.div className="flex gap-4 flex-wrap justify-center lg:justify-start mb-8" variants={itemVariants}>
+          <motion.div
+            className="flex gap-4 flex-wrap justify-center lg:justify-start mb-8"
+            variants={itemVariants}
+          >
             <NavLink to="/projects">
               <motion.button
                 className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-white gradient-bg rounded-full shadow-[0_4px_20px_rgba(108,99,255,0.4)] cursor-pointer border-none"
@@ -105,7 +107,12 @@ const Hero = () => {
                 <span className="transition-transform group-hover:translate-x-1">→</span>
               </motion.button>
             </NavLink>
-            <a href={personalInfo.resumeLink} download="Bhautik_Rakhasiya_Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <a
+              href={personalInfo.resumeLink}
+              download="Bhautik_Rakhasiya_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <motion.button
                 className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-primary bg-transparent border-2 border-primary rounded-full cursor-pointer hover:bg-primary hover:text-white transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
@@ -117,7 +124,10 @@ const Hero = () => {
           </motion.div>
 
           {/* Socials */}
-          <motion.div className="flex gap-4 justify-center lg:justify-start" variants={itemVariants}>
+          <motion.div
+            className="flex gap-4 justify-center lg:justify-start"
+            variants={itemVariants}
+          >
             {[
               { icon: <FaGithub />, link: personalInfo.socials.github, label: 'GitHub' },
               { icon: <FaLinkedinIn />, link: personalInfo.socials.linkedin, label: 'LinkedIn' },

@@ -64,8 +64,18 @@ const Contact = () => {
   };
 
   const contactMethods = [
-    { icon: <FaEnvelope />, label: 'Email', value: contactData.email, href: `mailto:${contactData.email}` },
-    { icon: <FaPhoneAlt />, label: 'Phone', value: contactData.phone, href: `tel:${contactData.phone}` },
+    {
+      icon: <FaEnvelope />,
+      label: 'Email',
+      value: contactData.email,
+      href: `mailto:${contactData.email}`,
+    },
+    {
+      icon: <FaPhoneAlt />,
+      label: 'Phone',
+      value: contactData.phone,
+      href: `tel:${contactData.phone}`,
+    },
     { icon: <FaMapMarkerAlt />, label: 'Location', value: personalInfo.location, href: '#' },
   ];
 
@@ -76,8 +86,8 @@ const Contact = () => {
   ];
 
   const isSending = status === 'sending';
-  const isSent    = status === 'success';
-  const isError   = status === 'error';
+  const isSent = status === 'success';
+  const isError = status === 'error';
 
   return (
     <div ref={ref}>
@@ -157,7 +167,8 @@ const Contact = () => {
           >
             <p className="text-text-primary font-semibold mb-1">🚀 Open to Opportunities</p>
             <p className="text-sm text-text-secondary leading-relaxed">
-              I'm always interested in new projects and collaborations. Whether it's a full-time role, freelance gig, or side project — let's connect!
+              I'm always interested in new projects and collaborations. Whether it's a full-time
+              role, freelance gig, or side project — let's connect!
             </p>
           </motion.div>
         </motion.div>
