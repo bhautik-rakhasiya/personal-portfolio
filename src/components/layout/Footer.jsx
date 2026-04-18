@@ -1,7 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { NavLink, Link } from 'react-router-dom';
-import { FaGithub, FaLinkedinIn, FaHeart, FaArrowUp, FaEnvelope } from 'react-icons/fa';
+import {
+  FaGithub,
+  FaLinkedinIn,
+  FaHeart,
+  FaArrowUp,
+  FaEnvelope,
+  FaInstagram,
+} from 'react-icons/fa';
 import { personalInfo, footerData } from '../../data';
 import Logo from '../common/Logo';
 
@@ -28,6 +35,7 @@ const Footer = () => {
                 { icon: <FaGithub />, link: personalInfo.socials.github },
                 { icon: <FaLinkedinIn />, link: personalInfo.socials.linkedin },
                 { icon: <FaEnvelope />, link: personalInfo.socials.email },
+                { icon: <FaInstagram />, link: personalInfo.socials.instagram },
               ].map((social, i) => (
                 <motion.a
                   key={i}

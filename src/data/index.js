@@ -171,9 +171,9 @@ export const experienceData = [
       'NestJS',
       'React.js',
       'MongoDB',
+      'JavaScript',
       'TypeScript',
       'AWS Cognito',
-      'YouTube Data API',
     ],
     responsibilities: [
       'Architected a YouTube livestreaming platform from scratch, processing 1,000+ daily webhooks via PubSubHubbub and managing 50,000+ synchronized video records.',
@@ -313,7 +313,7 @@ export const educationData = [
     institution: 'Shri G.T. Sheth Vidhyalaya',
     location: 'Rajkot, Gujarat',
     year: '2019 – 2021',
-    cgpa: '80.06%',
+    cgpa: '80.06 PR',
     highlights: [
       'Physics, Chemistry & Mathematics stream',
       'Strong analytical and problem-solving foundation',
@@ -327,7 +327,7 @@ export const educationData = [
     institution: 'Shri Mirambika Vidhyalaya',
     location: 'Rajkot, Gujarat',
     year: '2017 – 2019',
-    cgpa: '97.48%',
+    cgpa: '97.48 PR',
     highlights: [
       'Academic excellence with 97.48 percentile',
       'Built early passion for logic and technology',
