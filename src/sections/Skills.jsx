@@ -86,7 +86,7 @@ const Skills = () => {
                   >
                     <skill.icon size={22} />
                   </div>
-                  <h4 className="text-xs font-semibold text-text-primary leading-tight">
+                  <h4 className="text-xs font-semibold text-text-primary leading-tight line-clamp-2">
                     {skill.name}
                   </h4>
                 </motion.div>

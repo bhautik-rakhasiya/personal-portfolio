@@ -125,7 +125,7 @@ const Hero = () => {
 
           {/* Socials */}
           <motion.div
-            className="flex gap-4 justify-center lg:justify-start"
+            className="flex gap-4 justify-center lg:justify-start mb-5"
             variants={itemVariants}
           >
             {[
@@ -182,17 +182,7 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
-      >
-        <motion.button
-          className="w-10 h-10 flex items-center justify-center rounded-full border border-border text-text-muted hover:border-primary hover:text-primary transition-all duration-300 bg-transparent cursor-pointer"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-          aria-label="Scroll down"
-        >
-          <FaArrowDown size={14} />
-        </motion.button>
-      </motion.div>
+      ></motion.div>
     </section>
   );
 };

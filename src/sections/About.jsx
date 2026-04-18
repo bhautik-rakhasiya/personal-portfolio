@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import CountUp from 'react-countup';
@@ -7,6 +7,7 @@ import SectionHeader from '../components/ui/SectionHeader';
 
 const About = () => {
   const [ref, inView] = useInView({ threshold: 0.15, triggerOnce: true });
+  const [expanded, setExpanded] = useState(false);
   const [statsRef, statsInView] = useInView({ threshold: 0.3, triggerOnce: true });
 
   const containerVariants = {
@@ -19,7 +20,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-20 md:py-28 bg-dark-secondary relative overflow-hidden">
+    <section id="about" className="py-10 md:py-10 bg-dark-secondary relative overflow-hidden">
       <div className="absolute w-[600px] h-[600px] rounded-full bg-primary/3 -top-50 -right-50 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
@@ -30,63 +31,12 @@ const About = () => {
         />
 
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center mb-20"
+          className="flex flex-col gap-8"
           ref={ref}
           variants={containerVariants}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
         >
-          {/* Photo */}
-          <motion.div className="flex justify-center lg:justify-start" variants={itemVariants}>
-            <div className="relative">
-              {/* Main portrait */}
-              <div className="relative w-[300px] h-[380px] sm:w-[340px] sm:h-[430px] rounded-3xl overflow-hidden border-[3px] border-primary/30 z-2 shadow-[0_20px_60px_rgba(108,99,255,0.2)]">
-                <img
-                  src={personalInfo.profilePhoto}
-                  alt="Bhautik Rakhasiya"
-                  className="w-full h-full object-cover object-top"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.parentElement.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-dark-card text-5xl">👨‍💻</div>`;
-                  }}
-                />
-                {/* Photo overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-dark/50 via-transparent to-transparent" />
-              </div>
-
-              {/* Decorative offset border */}
-              <div className="absolute top-5 -right-5 bottom-5 -left-5 border-2 border-primary/20 rounded-3xl -z-1" />
-
-              {/* Experience badge */}
-              <motion.div
-                className="absolute -top-5 -left-5 bg-dark-card border border-border rounded-2xl px-5 py-4 flex items-center gap-3 z-3 shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
-                animate={{ y: [-5, 5, -5] }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <span className="text-3xl font-black font-heading text-gradient">2+</span>
-                <span className="text-xs text-text-secondary font-medium leading-tight">
-                  Years of
-                  <br />
-                  Experience
-                </span>
-              </motion.div>
-
-              {/* Projects badge */}
-              <motion.div
-                className="absolute -bottom-5 -right-5 bg-dark-card border border-border rounded-2xl px-5 py-4 flex items-center gap-3 z-3 shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
-                animate={{ y: [5, -5, 5] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <span className="text-3xl font-black font-heading text-gradient">4+</span>
-                <span className="text-xs text-text-secondary font-medium leading-tight">
-                  Projects
-                  <br />
-                  Delivered
-                </span>
-              </motion.div>
-            </div>
-          </motion.div>
-
           {/* Text Content */}
           <motion.div className="flex flex-col gap-6" variants={itemVariants}>
             <div>
@@ -108,15 +58,35 @@ const About = () => {
 
             <motion.div className="flex flex-col gap-4" variants={itemVariants}>
               {aboutData.paragraphs.map((para, i) => (
-                <p key={i} className="text-text-secondary leading-relaxed text-base">
+                <p
+                  key={i}
+                  className={`text-text-secondary leading-relaxed text-base${
+                    i >= 2 && !expanded ? ' hidden sm:block' : ''
+                  }`}
+                >
                   {para}
                 </p>
               ))}
+              {!expanded ? (
+                <button
+                  className="sm:hidden self-start text-sm font-semibold text-primary mt-1 cursor-pointer"
+                  onClick={() => setExpanded(true)}
+                >
+                  Show more...
+                </button>
+              ) : (
+                <button
+                  className="sm:hidden self-start text-sm font-semibold text-primary mt-1 cursor-pointer"
+                  onClick={() => setExpanded(false)}
+                >
+                  Show less
+                </button>
+              )}
             </motion.div>
 
             {/* Key facts */}
             <motion.div
-              className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-2"
               variants={itemVariants}
             >
               {[
@@ -132,7 +102,9 @@ const About = () => {
                   <span className="text-[10px] font-bold uppercase tracking-wider text-text-muted">
                     {fact.label}
                   </span>
-                  <span className="text-sm font-medium text-text-primary">{fact.value}</span>
+                  <span className="text-sm font-medium text-text-primary line-clamp-2">
+                    {fact.value}
+                  </span>
                 </div>
               ))}
             </motion.div>
@@ -163,33 +135,7 @@ const About = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={statsInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.6, 0, 0.2, 1] }}
-        >
-          {aboutData.stats.map((stat, i) => (
-            <motion.div
-              key={i}
-              className="glass rounded-2xl relative overflow-hidden cursor-default group flex items-center gap-6 px-8 py-7"
-              whileHover={{ y: -6, boxShadow: '0 24px 50px rgba(108, 99, 255, 0.18)' }}
-              transition={{ duration: 0.3 }}
-            >
-              {/* Icon circle */}
-              <div className="flex-shrink-0 w-14 h-14 rounded-xl gradient-bg flex items-center justify-center text-2xl shadow-lg">
-                {stat.icon}
-              </div>
-              {/* Text */}
-              <div>
-                <div className="text-4xl md:text-5xl font-extrabold font-heading text-gradient leading-none mb-1">
-                  {statsInView && (
-                    <CountUp end={stat.number} duration={2.5} delay={i * 0.3} separator="," />
-                  )}
-                  <span className="text-gradient">{stat.suffix}</span>
-                </div>
-                <div className="text-base font-bold text-text-primary mb-0.5">{stat.label}</div>
-                <div className="text-xs text-text-secondary">{stat.desc}</div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 h-[3px] gradient-bg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </motion.div>
-          ))}
-        </motion.div>
+        ></motion.div>
       </div>
     </section>
   );

@@ -48,6 +48,7 @@ export const personalInfo = {
     github: 'https://github.com/bhautik-rakhasiya',
     linkedin: 'https://linkedin.com/in/bhautik-rakhasiya',
     email: 'mailto:bhautikrakhasiya108@gmail.com',
+    instagram: 'https://instagram.com/bhautik_rakhasiya_108',
   },
   // Place your actual photo at public/images/profile.jpg
   profilePhoto: '/images/profile.jpg',
@@ -74,9 +75,10 @@ export const navLinks = [
 // ========================
 export const aboutData = {
   paragraphs: [
-    "I'm a Software Developer at Kevit.io with hands-on experience building production-grade web applications. I specialize in Node.js, NestJS, React.js, and MongoDB — crafting everything from event-driven webhook pipelines to interactive banking frontends.",
-    "I thrive on solving real-world engineering challenges — whether it's architecting a system to process 1,000+ YouTube webhooks per day, synchronizing 50,000+ records reliably, or implementing secure AWS Cognito authentication flows.",
-    "I graduated with a degree in Computer Engineering from V.V.P. Engineering College, Rajkot (CGPA: 8.54), and I'm always exploring new technologies to push the boundaries of what's possible on the web.",
+    "I'm a Software Developer at Kevit.io with 2 years of experience designing and delivering scalable, production-grade web applications across the entire stack. My core stack spans Node.js, NestJS, Express.js, and MongoDB on the backend, and React.js, TypeScript, and Tailwind CSS on the frontend — and I work end-to-end, from architecting data pipelines and RESTful APIs to building clean, responsive user interfaces.",
+    "On the backend, I specialize in event-driven architecture, webhook ingestion pipelines, and idempotent data processing. I've built systems that reliably process 1,000+ webhook events daily and synchronize 50,000+ records across distributed sources — with a strong focus on exactly-once data consistency, fault tolerance, and scalability. I've also integrated third-party APIs including YouTube Data API v3 and ClickUp, and implemented secure AWS Cognito authentication flows including passwordless and MFA.",
+    "On the frontend, I architect projects from scratch — defining component structure, building reusable UI libraries with React.js and MUI, implementing Role-Based Access Control (RBAC) with protected routing, and delivering production-ready interfaces across domains including digital banking, livestreaming, and internal management platforms. I've also built Progressive Web App (PWA) experiences and integrated multi-language support using i18n.",
+    'Across the full stack, I take ownership of complete systems — from database schema design and API integration through business logic, cloud services, and the final delivered interface — driven by a focus on performance, maintainability, and real-world impact.',
   ],
   highlights: [
     { icon: '🎯', text: 'Problem Solver' },
@@ -107,23 +109,23 @@ export const aboutData = {
 // ========================
 export const skillsData = [
   // Frontend
+  { name: 'Node.js', level: 93, icon: FaNodeJs, color: '#339933', category: 'Backend' },
+  { name: 'Express.js', level: 91, icon: SiExpress, color: '#ffffff', category: 'Backend' },
   { name: 'JavaScript', level: 92, icon: SiJavascript, color: '#f7df1e', category: 'Frontend' },
   { name: 'TypeScript', level: 86, icon: SiTypescript, color: '#3178c6', category: 'Frontend' },
-  { name: 'HTML5', level: 88, icon: SiHtml5, color: '#e34f26', category: 'Frontend' },
-  { name: 'CSS3', level: 85, icon: SiCss3, color: '#1572b6', category: 'Frontend' },
+  { name: 'NestJS', level: 88, icon: SiNestjs, color: '#e0234e', category: 'Backend' },
+  { name: 'MongoDB', level: 87, icon: SiMongodb, color: '#47a248', category: 'Backend' },
   { name: 'React.js', level: 88, icon: FaReact, color: '#61dafb', category: 'Frontend' },
   { name: 'Redux', level: 78, icon: SiRedux, color: '#764abc', category: 'Frontend' },
   { name: 'Tailwind CSS', level: 87, icon: SiTailwindcss, color: '#06b6d4', category: 'Frontend' },
   { name: 'MUI', level: 80, icon: SiMui, color: '#007fff', category: 'Frontend' },
+  { name: 'HTML5', level: 88, icon: SiHtml5, color: '#e34f26', category: 'Frontend' },
+  { name: 'CSS3', level: 85, icon: SiCss3, color: '#1572b6', category: 'Frontend' },
   // Backend
-  { name: 'Node.js', level: 93, icon: FaNodeJs, color: '#339933', category: 'Backend' },
-  { name: 'Express.js', level: 91, icon: SiExpress, color: '#ffffff', category: 'Backend' },
-  { name: 'NestJS', level: 88, icon: SiNestjs, color: '#e0234e', category: 'Backend' },
-  { name: 'MongoDB', level: 87, icon: SiMongodb, color: '#47a248', category: 'Backend' },
   { name: 'MySQL', level: 74, icon: SiMysql, color: '#4479a1', category: 'Backend' },
   { name: 'SQLite', level: 68, icon: SiSqlite, color: '#003b57', category: 'Backend' },
   // Cloud & Tools
-  { name: 'AWS (Cognito/S3/SES)', level: 80, icon: FaAws, color: '#ff9900', category: 'Cloud' },
+  { name: 'AWS (Cognito / S3 / SES)', level: 80, icon: FaAws, color: '#ff9900', category: 'Cloud' },
   {
     name: 'YouTube API / Webhooks',
     level: 85,
@@ -236,7 +238,7 @@ export const projectsData = [
       'Focused on responsive design, accessibility, and pixel-perfect implementation of complex banking workflows.',
     ],
     image: '/images/banking-portal.png',
-    tags: ['React.js', 'TypeScript', 'MUI', 'Redux', 'AWS Cognito', 'i18n', 'Tailwind CSS', 'RBAC'],
+    tags: ['React.js', 'TypeScript', 'MUI', 'Redux', 'AWS Cognito', 'i18n', 'RBAC'],
     liveUrl: '#',
     githubUrl: '#',
     featured: true,
@@ -258,7 +260,7 @@ export const projectsData = [
     ],
     image:
       'https://www.slideteam.net/media/catalog/product/cache/1280x720/r/e/resource_demand_and_capacity_planning_dashboard_slide01.jpg',
-    tags: ['Node.js', 'ClickUp API', 'MongoDB', 'TypeScript', 'Scheduled Jobs', 'REST API'],
+    tags: ['Bun', 'Express.js', 'ClickUp API', 'Sqlite', 'Scheduled Jobs', 'REST API'],
     liveUrl: '#',
     githubUrl: '#',
     featured: true,
@@ -269,7 +271,7 @@ export const projectsData = [
     title: 'Society Management Web App',
     subtitle: 'PWA with RBAC & Mobile-Responsive UI',
     description:
-      'An internal society management application built with React.js and Tailwind CSS. Features mobile number + password authentication via React Context API, comprehensive RBAC with route-level protection, and Progressive Web App support for native-like device installation.',
+      'An internal society management application built with React.js and Tailwind CSS. Includes secure mobile number–based authentication with password login, role-based access control (RBAC) with route protection, and Progressive Web App support for a native-like user experience.',
     longDescription: [
       'Built authentication state management globally via React Context API — ensuring secure, consistent session handling across all protected routes.',
       'Designed and enforced a Role-Based Access Control (RBAC) system with route-level protection — each user role accessing only their permitted screens.',

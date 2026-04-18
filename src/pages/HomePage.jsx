@@ -10,7 +10,7 @@ const HomePage = () => {
       <section className="py-20 px-6 max-w-7xl mx-auto" id="about">
         <About />
       </section>
-      <section className="py-20 px-6 max-w-7xl mx-auto" id="skills">
+      <section className="pb-[10px] px-6 max-w-7xl mx-auto" id="skills">
         <Skills />
       </section>
     </>

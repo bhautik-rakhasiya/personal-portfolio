@@ -76,7 +76,7 @@ const Contact = () => {
       value: contactData.phone,
       href: `tel:${contactData.phone}`,
     },
-    { icon: <FaMapMarkerAlt />, label: 'Location', value: personalInfo.location, href: '#' },
+    { icon: <FaMapMarkerAlt />, label: 'Location', value: personalInfo.location },
   ];
 
   const socialLinks = [
@@ -165,10 +165,17 @@ const Contact = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.6 }}
           >
-            <p className="text-text-primary font-semibold mb-1">🚀 Open to Opportunities</p>
-            <p className="text-sm text-text-secondary leading-relaxed">
-              I'm always interested in new projects and collaborations. Whether it's a full-time
-              role, freelance gig, or side project — let's connect!
+            <p className="text-text-primary font-bold text-base mb-4">🚀 Open to Opportunities</p>
+            <ul className="flex flex-col gap-2 mb-4">
+              {['Full-time roles', 'Freelance projects', 'Startup collaborations'].map((item) => (
+                <li key={item} className="flex items-center gap-2 text-sm text-text-secondary">
+                  <span className="text-primary font-bold">✔</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="text-sm text-text-primary font-medium">
+              Let's build something impactful together.
             </p>
           </motion.div>
         </motion.div>
@@ -240,7 +247,7 @@ const Contact = () => {
               value={formData.message}
               onChange={handleChange}
               required
-              rows={5}
+              rows={10}
               placeholder="Tell me about your project..."
               className="w-full px-4 py-3 bg-dark border border-border rounded-xl text-sm text-text-primary placeholder:text-text-muted focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300 resize-y min-h-[120px]"
             />
